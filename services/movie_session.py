@@ -8,12 +8,10 @@ from datetime import datetime
 def create_movie_session(movie_show_time: datetime ,
                          movie_id: int,
                          cinema_hall_id: int) -> MovieSession:
-    movie = Movie.objects.get(id=movie_id)
-    hall = CinemaHall.objects.get(id=cinema_hall_id)
     return MovieSession.objects.create(
         show_time=movie_show_time,
-        movie=movie,
-        cinema_hall=hall)
+        movie_id=movie_id,
+        cinema_hall_id=cinema_hall_id)
 
 
 def get_movies_sessions(session_date: str = None) -> QuerySet[MovieSession]:
